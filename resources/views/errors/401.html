@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content%}
+
+<div class="flex justify-center w-full m-auto items-center">
+    <div class="p-8 leading-normal tracking-wide text-justify">
+        {% if current_user.is_authenticated %}
+            <div class="text-5xl font-thin tracking-tight text-grey-darker tracking-wide">
+                <i class="text-red-light">Error</i> 4<i class="ion-md-sad"></i>1
+            </div>
+            <div class="text-grey-darker mt-5 text-lg">Sorry for interrupting you, but you haven't been authorized to access to this page yet.</div>
+        {% else %}
+        <div class="text-grey-darker mt-5 text-lg">Sorry, this page is for authorized users. Please <a class="no-underline text-blue-darkest hover:underline" href="{{ url_for('login_with', provider_name='google') }}">sign in with your google account</a> first.</div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

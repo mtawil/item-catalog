@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<div class="px-0 sm:px-4 md:px-8 lg:px-16 xl:px-32 mb-10">
+    <a class="px-10 no-underline text-grey-darker hover:text-grey-darkest"
+       href="{{ url_for('list_items', category_slug=item.category.slug) }}">
+        <i class="ion-md-arrow-back"></i>
+        <span>Back to the list of {{ item.category.title }}'s items</span>
+    </a>
+</div>
+
+<div class="flex justify-between sm:items-start w-full flex-col sm:flex-row px-0 sm:px-4 md:px-8 lg:px-16 xl:px-32">
+    <div class="flex-col sm:order-1 mb-8 sm:mb-0 px-10">
+        <a class="border rounded hover:shadow border-grey-light hover:border-grey focus:shadow-inner text-grey-dark hover:text-grey-darker no-underline text-center py-2 px-4 text-lg inline-block"
+           href="{{ url_for('add_item', category_slug=category.slug) }}"><i class="ion-ios-add"></i></a>
+        <a class="border rounded hover:shadow border-grey-light hover:border-grey focus:shadow-inner text-grey-dark hover:text-grey-darker no-underline text-center py-2 px-4 text-lg inline-block"
+           href="{{ url_for('edit_item', category_slug=category.slug, item_slug=item.slug) }}"><i
+                class="ion-md-create"></i></a>
+        <a class="border rounded hover:shadow border-red-dark bg-red-dark hover:border-red hover:bg-red focus:shadow-inner text-white no-underline text-center py-2 px-4 text-lg inline-block"
+           href="{{ url_for('delete_item', category_slug=category.slug, item_slug=item.slug) }}"><i
+                class="ion-ios-trash"></i></a>
+    </div>
+
+    <div class="flex-col sm:order-0 px-10">
+        <div class="text-grey-darker pb-2">
+            <h1>{{ item.title }}</h1>
+            <div class="text-grey-dark mt-2">By {{ item.user.name }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="flex m-auto flex-col w-full mt-5 px-0 sm:px-4 md:px-8 lg:px-16 xl:px-32">
+    <div class="flex-auto mt-5 text-lg text-justify text-grey-darkest px-10">
+        {{ item.description }}
+    </div>
+</div>
+{% endblock %}

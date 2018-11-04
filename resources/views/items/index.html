@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<div class="w-full m-auto mt-0 px-0 sm:px-4 md:px-8 lg:px-16 xl:px-32">
+    <div class="p-10 pt-0">
+        <div class="flex md:items-center justify-between flex-col md:flex-row border-grey-lightest border-b-2 mb-8 pb-4">
+            <div class="flex-col md:order-1 mb-8 md:mb-0">
+                <a class="border rounded hover:shadow border-grey-light hover:border-grey focus:shadow-inner text-grey-dark hover:text-grey-darker no-underline text-center font-thin p-2 text-sm"
+                   href="{{ url_for('add_item', category_slug=category.slug) }}"><i class="ion-md-add"></i>&nbsp;&nbsp;Add
+                    a new item</a>
+            </div>
+
+            <div class="flex-col md:order-0">
+                <div class="text-grey-darker">
+                    <h1>List of {{ category.title.lower() }}'s items:</h1>
+                </div>
+            </div>
+        </div>
+
+
+        <ol class="list-reset">
+            {% for item in items %}
+            <li class="m-5">
+                <a class="border-b-4 border-grey-light text-xl no-underline text-grey-dark hover:text-grey-darker"
+                   href="{{ url_for('view_item', category_slug=item.category.slug, item_slug=item.slug) }}">
+                    {{ item.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+{% endblock %}

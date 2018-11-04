@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<div class="flex justify-center w-full items-start m-auto mt-0">
+    <div class="md:shadow border border-grey-lighter w-full md:w-auto border-r-0 border-l-0 md:rounded py-3 px-5 md:px-10">
+        <form action="{{ url_for('destroy_item') }}" method="post">
+            <div class="mb-8 mt-5 text-lg text-grey-darker px-3">
+                Are you sure you want to delete this item: {{ item.title }}?
+            </div>
+            <div>
+                <button type="submit"
+                        class="bg-red-dark hover:bg-red hover:shadow-md focus:shadow-inner focus:outline-none text-sm text-white rounded py-2 px-3 mx-3">
+                    Yes, delete it!
+                </button>
+                <button class="border rounded hover:shadow border-grey hover:border-grey-dark focus:shadow-inner text-grey-darker hover:text-grey-darkest no-underline text-center font-thin p-2 text-sm"
+                        onclick="event.preventDefault(); window.history.back()">Cancel and back
+                </button>
+            </div>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="item_id" value="{{ item.id }}">
+        </form>
+    </div>
+</div>
+{% endblock %}
