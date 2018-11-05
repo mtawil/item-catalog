@@ -1,9 +1,9 @@
 import os
 
-ORATOR_DATABASES = {
-    'default': 'sqlite3',
+db = {
+    'default': 'sqlite',
 
-    'sqlite3': {
+    'sqlite': {
         'driver': 'sqlite',
         'database': os.path.join(os.path.dirname(__file__), '../database.db')
     },
@@ -11,9 +11,21 @@ ORATOR_DATABASES = {
     'mysql': {
         'driver': 'mysql',
         'host': 'localhost',
-        'database': 'database',
+        'database': 'item_catalog',
         'user': 'root',
         'password': '',
-        'prefix': ''
+    },
+
+    'postgres': {
+        'driver': 'postgres',
+        'host': 'localhost',
+        'database': 'item_catalog',
+        'user': '',
+        'password': '',
     }
 }
+
+ORATOR_DATABASES = {
+    'development': db[db['default']]
+}
+
