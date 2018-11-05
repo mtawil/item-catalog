@@ -1,6 +1,6 @@
 # Item Catalog
 
-This project has been developed so you can be able to create items like (notes, documents, articles ..ect) with the reserved categories.
+This project has been developed so you can be able to create items like (notes, documents, articles, etc.) with the reserved categories.
 
 ## Getting Started
 
