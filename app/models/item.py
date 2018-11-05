@@ -7,7 +7,7 @@ from orator.orm import belongs_to
 class Item(db.Model):
     __table__ = 'items'
     __fillable__ = ['title', 'description']
-    __hidden__ = ['slug']
+    __hidden__ = ['slug', 'category_id', 'user_id']
     __timestamps__ = False
 
     @mutator
