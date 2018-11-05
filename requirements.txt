@@ -3,4 +3,5 @@ orator
 flask
 flask_login
 flask_orator
+flask-restful
 authomatic

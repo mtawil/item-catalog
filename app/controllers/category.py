@@ -1,8 +1,11 @@
-from flask import render_template, jsonify
+from flask import render_template
+from flask_restful import Api
 
 from app import app
-from app.models.category import Category
+from app.models.category import Category, CategoryAPI
 from app.models.item import Item
+
+api = Api(app)
 
 
 @app.route('/')
@@ -26,13 +29,6 @@ def index():
     )
 
 
-@app.route('/catalog.json')
-def index_json():
-    """
-    Here is the JSON API Endpoints for getting
-    all categories and related items
-    """
+api.add_resource(CategoryAPI, '/catalog.json')
 
-    return jsonify({
-        'categories': Category.with_('items').get().serialize()
-    })
+

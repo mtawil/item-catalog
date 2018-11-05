@@ -1,3 +1,4 @@
+from flask_restful import Resource
 from orator import mutator
 from slugify import slugify
 from app import db
@@ -20,3 +21,10 @@ class Category(db.Model):
         from app.models.item import Item
 
         return Item
+
+
+class CategoryAPI(Resource):
+    def get(self):
+        return {
+            'categories': Category.with_('items').get().serialize()
+        }
