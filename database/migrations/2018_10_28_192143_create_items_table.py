@@ -16,9 +16,6 @@ class CreateItemsTable(Migration):
             table.integer('category_id').unsigned()
             table.integer('user_id').unsigned()
 
-            table.foreign('category_id').references('id').on('categories').on_delete('cascade')
-            table.foreign('user_id').references('id').on('users').on_delete('cascade')
-
     def down(self):
         """
         Revert the migrations.
