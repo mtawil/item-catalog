@@ -15,4 +15,4 @@ class CreateForeignKeys(Migration):
         """
         Revert the migrations.
         """
-        self.schema.drop('users')
+        pass
